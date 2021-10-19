@@ -1,0 +1,173 @@
+.filterstab {
+  display: inline;
+  // white-space: nowrap;
+  // display: block;
+  // overflow-x: auto; 
+  scrollbar-width: none;
+  position: relative;
+  white-space: nowrap;
+
+  .filterbtn {
+    display: inline-block !important;
+    font-size: 12px;
+
+    Dropdown1 {
+      display: inline-block !important;
+    }
+    box-shadow: 0px 2px 5px 0px #0000001f;
+  }
+  .css-2b097c-container {
+    display: inline-block;
+    margin: 6px;
+    font-weight: 500;
+  }
+  .selecttab {
+    margin: 5px 5px 0px 0px;
+    position: relative;
+    // top: 4px;
+    font-size: 12px;
+    option {
+      display: block;
+      position: relative;
+      z-index: 99;
+      min-width: 180px;
+    }
+  }
+  .filterbtn {
+    margin: 5px 5px 0px 0px;
+    min-width: 180px;
+    font-weight: 500;
+  }
+  // .css-1pahdxg-control:hover,
+  // .css-1pahdxg-control:active,
+  // .css-1pahdxg-control:visited,
+  // .css-1pahdxg-control:focus{
+  //   border: 0;
+  // }
+  .css-1pahdxg-control,
+  .css-yk16xz-control,
+  .css-yk16xz-control:hover,
+  .css-yk16xz-control:active,
+  .css-yk16xz-control:checked {
+    height: 27px;
+    // height: 28px;
+    min-height: 28px;
+    min-width: 150px;
+    box-shadow: 0px 2px 5px 0px #0000001f;
+    border-radius: 6px !important;
+
+    option {
+      position: relative;
+      z-index: 99;
+    }
+    .css-2613qy-menu {
+      position: relative;
+      // top: 010px;
+      z-index: 99;
+    }
+  }
+  .custom-btn{
+    height: 29px;
+    background-color: #fff;
+    color: #333;
+    border-color: #ccc;
+    padding: 0px 15px 1px;
+    text-align: left;
+    padding: 0 10px;
+  }
+    .custom-btn:hover{
+      background: linear-gradient(180deg, #3A94C9 0%, #0E5688 100%);
+      /* border: 1px solid #389ed6; */
+      color: #fff !important;
+    }
+  
+  .control-arrow {
+    background-color: #000 !important;
+    background: #000 !important;
+    border-radius: 50px;
+  }
+
+  .css-yk16xz-control .css-tlfecz-indicatorContainer,
+  .css-1pahdxg-control .css-tlfecz-indicatorContainer,
+  .css-yk16xz-control .css-tlfecz-indicatorContainer:hover,
+  .css-1pahdxg-control .css-tlfecz-indicatorContainer:hover {
+    background: #fff !important;
+    color: #656565 !important;
+    padding: 0px 10px;
+  
+  }
+  .css-yk16xz-control {
+    // height: 28.6px;
+    cursor: pointer;
+    .css-1uccc91-singleValue {
+      top: 45% !important;
+    }
+  }
+  .selected {
+    border: 1px solid #e1e9f8;
+    background: #eefbfb;
+    color: #005a9f;
+    font-weight: 800;
+  }
+}
+.control-arrow,
+.carousel.carousel-slider .control-arrow {
+  color: #000 !important;
+}
+.carousel-status,
+.control-dots {
+  display: none;
+}
+
+// Dropdown styling
+.css-g1d714-ValueContainer{
+    padding: 0px 10px 0px;
+    margin-bottom: 1px;
+    height: 22px;
+}
+.css-1hb7zxy-IndicatorsContainer {
+  height: 27px;
+  .css-tlfecz-indicatorContainer {
+    padding: 0px 8px;
+  }
+}
+
+.css-1gtu0rj-indicatorContainer{
+  padding: 4px 10px 3px !important;  
+  // height: 27px;
+  background: linear-gradient(180deg, #3A94C9 0%, #0E5688 100%) !important;
+    color: #fff !important;
+    border-radius: 0 5px 5px 0 !important;
+  // top: 5px;
+}
+// .filterstab .filterbtn{
+//   min-width: 155px !important;
+// }
+
+// .transactionFilters{
+//   overflow-x: scroll;
+//   ::-webkit-scrollbar-track {
+//     box-shadow: none;
+//     border-radius: 10px;
+//   }
+//   ::-webkit-scrollbar {
+//     height: 2px !important;
+//   }
+// }
+
+
+.skiptrace{
+  .filterbtn{
+    min-width: 125px !important;
+  }
+  .filterstab .css-1pahdxg-control, .filterstab .css-yk16xz-control, .filterstab .css-yk16xz-control:hover, .filterstab .css-yk16xz-control:active, .filterstab .css-yk16xz-control:checked{
+    min-width: 125px !important;
+
+  }
+  i{
+    position: relative;
+    top: 3px;
+    padding-right: 7px;
+    padding-left: 5px;
+  }
+}

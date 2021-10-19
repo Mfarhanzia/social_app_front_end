@@ -1,0 +1,13 @@
+
+import React from 'react';
+
+const home = () => {
+  return (
+    <svg width="56" height="46" viewBox="0 0 56 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.5 46V29.7647H33.5V46H47.25V24.3529H55.5L28 0L0.5 24.3529H8.75V46H22.5Z" fill="#2C86C0"/>
+    </svg>
+
+  )
+}
+
+export default home;

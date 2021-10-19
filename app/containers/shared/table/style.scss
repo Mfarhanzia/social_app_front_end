@@ -1,0 +1,111 @@
+.xforce_table {
+  
+  thead {
+    // :first-child{
+    //   border-radius: 6px 0px 0px 6px;
+    // }
+    // :last-child{
+    //   border-radius: 0px 6px 6px 0px;
+    // }
+    box-shadow: 0px 4px 8px -2px rgba(0, 0, 0, 0.25);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    td:first-child {
+      border-left-style: solid;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+    th:last-child {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+    th:first-child {
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+    }
+    td:last-child {
+      border-right-style: solid;
+      border-bottom-right-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    tr {
+      border-radius: 6px 0px 0px 6px !important;
+      // border-style: none !important;
+      th {
+        color: #fff;
+        background: #4da8da;
+        border-bottom-width: 0px;
+        span {
+          border-right: 1px solid #fff;
+          display: block;
+          text-align: center;
+          text-transform: uppercase;
+          font-weight: 600;
+          padding-right: 6px;
+        }
+      }
+      :last-child span {
+        border-right: none !important;
+      }
+    }
+  }
+  td {
+    text-align: center;
+    border-style: none !important;
+  }
+}
+.action_btn {
+  i {
+    margin-right: 10px;
+  }
+}
+.action_drop_btn {
+  .btn-outline-primary {
+    color: #4b83f0 !important;
+    border: 1px solid #4b83f0 !important;
+  }
+  .btn-outline-primary:hover {
+    color: #fff !important;
+  }
+  .btn-outline-danger {
+    background: #fbd9d9;
+    color: #f53d3d !important;
+    border: 1px solid #f53d3d !important;
+  }
+  .btn-outline-danger:hover {
+    background: #f53d3d;
+    color: #fff !important;
+  }
+}
+
+  
+::-webkit-scrollbar {
+  height: 4px;              /* height of horizontal scrollbar ← You're missing this */
+  width: 4px;               /* width of vertical scrollbar */
+  border: 0 !important;
+  background-color: #fff !important;
+  color: #fff !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: none !important; 
+  border-radius: 0;
+  
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background : #005A9F;
+  border-radius: 10px;
+  margin: 10px !important;
+  
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #007CC7;
+  
+}

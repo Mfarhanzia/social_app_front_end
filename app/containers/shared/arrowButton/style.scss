@@ -1,0 +1,43 @@
+button.closeBtn {
+  position: absolute;
+  width: 30px !important;
+  top: 18px;
+  left: -30px;
+  background: #005a9f;
+  padding: 0px;
+  border: none;
+  min-width: 30px;
+  border-radius: 0px;
+  height: 22px;
+  &:active {
+    background-color: #005a9f !important;
+    border: none !important;
+  }
+  .MuiButton-startIcon {
+    margin-right: -2px;
+  }
+  svg {
+    font-size: 17px;
+  }
+  &:hover {
+    background: #005a9f;
+    border: none;
+  }
+}
+button.closeBtn:hover .arrowShape{
+  border-right: 8px solid #2f4455;
+  border-top: 11.2px solid transparent;
+  border-bottom: 11px solid transparent;
+  position: absolute;
+}
+.arrowShape {
+  top: 18px;
+  left: -38px;
+  cursor: pointer;
+  width: 0;
+  height: 0;
+  border-right: 8px solid #005a9f;
+  border-top: 11.2px solid transparent;
+  border-bottom: 11px solid transparent;
+  position: absolute;
+}

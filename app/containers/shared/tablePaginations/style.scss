@@ -1,0 +1,23 @@
+.table_footer {
+    .enteries_numbers {
+      color: #4e4e4e;
+      margin-top: 8px;
+    }
+    position: absolute;
+    width: 92%;
+    bottom: 0px;
+    .pagination {
+      .active {
+        background: #005a9f !important;
+        .page-link {
+          color: #fff;
+          background-color: #005a9f;
+          border-color: #005a9f;
+        }
+      }
+      .page-link {
+        color: #4e4e4e;
+      }
+    }
+  }
+  

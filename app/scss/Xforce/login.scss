@@ -1,0 +1,139 @@
+$bg-dark-blue : #29307e;
+$bg-form-blue : #3C45A8;
+$bg-light-blue : #4DA8DA;
+
+.downloadapp{
+    padding: 10px 10px 20px 10px!important;
+    // height: 60px;
+    width: 130px;
+}
+.text-uppercase{
+    text-transform: uppercase;
+}
+.socialAppLogin{
+   
+    background-color: #fff;
+    
+    .text-right{
+        text-align: right;
+    }
+    .prospectxLogo{
+    width: auto;
+    height: 90px;
+    margin: 20px;
+    margin-bottom: 50px;
+    }
+    .vector_SE{
+        width: auto;
+        height: 350px;
+    }
+    .align-content-center{
+        justify-content: center;
+    }
+
+    .bg-dark-blue{
+        background-color: $bg-dark-blue;
+        color: #C6C9F9;
+        min-height: 710px;
+        padding: 15px 15px;
+        p{
+            color: #C6C9F9;
+        }
+        a{
+            color: #9499EC;
+            text-decoration: none;
+        }
+        .btn-outline-primary{
+            border-color: #fff;
+            color: #fff;
+            padding: 3px auto;
+        }
+        .btn{
+            padding: 4px 0 !important;
+        }
+    }
+    form{
+        max-width: 65%;
+        margin: auto;
+
+        input{
+            background-color: $bg-form-blue;
+            color: #fff;
+            border-color: $bg-form-blue;
+            margin-bottom: 15px;
+        }
+        ::placeholder{
+            color: #C6C9F9;
+            font-size: 11px;
+        }
+        .input-group-text{
+            border-radius: .25rem 0rem 0rem .25rem;
+            padding: 0.4rem .75rem;
+        } 
+    }
+    .select-selected,
+    .select-items{
+        background: #EEFBFB !important;
+        color: #005A9F !important;
+    }
+}
+.socialAppLogin form input[type="checkbox"]{
+    background-color: transparent;
+    border: 1px solid #C6C9F9;
+}
+.block-center{
+    display: flex;
+    height: 100%;
+
+}
+.color-light a,
+.color-light{
+    color: #C6C9f9 !important;
+    // padding: 9.5px 10px;
+}
+// .ptb-2{
+//     padding: 2px 0;
+// }
+.socialblock{
+    display: inline-block;
+    justify-content: center;
+    .socialicons{
+        font-size: 20px;
+        margin: 8px;
+        color: #9499EC ;
+    }
+}
+.socialAppSignup{
+    form{
+        max-width: 85% !important;
+        .col-sm-6{
+            padding-right: 8px;
+            padding-left: 8px;
+        }
+    }
+}
+
+.bg-form-blue{
+    background-color: $bg-form-blue !important;
+    border-color: $bg-form-blue !important;
+}
+
+.full-height-row{
+    height: 100%;
+}
+.full-height-block{
+    height: 100vh;
+}
+
+$medium: 992px;
+
+.socialAppLogin .img-block{
+    @media screen and (max-width: $medium) {
+        display: none;
+       
+    }
+    @media screen and (min-width: $medium) {
+        display: block;
+
+    }
+}

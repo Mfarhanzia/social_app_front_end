@@ -1,0 +1,23 @@
+
+.quick_action_btns{
+  .btn{
+     box-shadow: 0px 2px 4px 0px #0000002B;
+     border-radius: 54px;
+     margin-right: 10px;
+     width: 25px;
+     height: 24px;
+     padding: 0px;
+     i {
+       font-size: 13px;
+     }
+  }
+  .call_btn{
+    color: #67E0F9;
+  }
+  .comment_btn{
+    color: #FB7E49;
+  }
+  .mail_btn{
+    color: #2CDF6A;
+  }
+}
