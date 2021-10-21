@@ -20,7 +20,6 @@ export default function HomePage(props) {
     <div className="container-fluid">
       <Row className="align-items-center full-height-row">
         <Col lg>
-          <Button onClick={() => push("/editProfile")}>Profile</Button>
           <h1>
             <FormattedMessage {...messages.header} />
           </h1>

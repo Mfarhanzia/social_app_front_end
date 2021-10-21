@@ -33,27 +33,16 @@ function* loginSaga(action) {
   }
 }
 
-
 function* logoutSaga(action) {
-  const { payload: {formData, history, setIsLoading, setOtherError}} = action;
+  const { payload: {history}} = action;
   try {
-    // const response = yield axios.post(
-    //   'user/login/',
-    //   formData
-    // );
-    // if (response.status === 200) {
-    //   setIsLoading(false)
       yield put({
         type: loggedOutAction().type,
       });
+      history.push("/login")
     // }
   } catch (error) {
     console.log(error)
-    setIsLoading(false)
-    const {response: {data={}, status=null}} = error;
-    if (status === 401){
-      setOtherError(data.detail)
-    }
   }
 }
 

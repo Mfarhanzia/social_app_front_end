@@ -23,6 +23,7 @@ import { defaultValues } from './constant';
 import { DOMAIN } from "../../config/constants";
 import UpdatePassword from './passwordUpdateForm';
 import UploadFile from '../shared/uploadFile';
+import Header from '../../components/Header'
 
 export default function ViewProfile(props) {
   const history = { props };
@@ -223,7 +224,6 @@ export default function ViewProfile(props) {
                           </FormGroup>
                         </Col>
                       </Row>
-
                       <br />
                       <Col xl="12" className="text-center">
                         <Button

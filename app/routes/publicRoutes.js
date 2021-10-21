@@ -6,5 +6,4 @@ export const publicRoutes = [
   // Public Routes
   { path: '/login', component: login, ispublic: true },
   { path: '/signup', component: signUp, ispublic: true },
-
 ];

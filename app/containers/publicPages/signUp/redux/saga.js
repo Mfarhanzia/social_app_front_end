@@ -3,7 +3,7 @@ import axios from '../../../../config/axios';
 import {
     signUpRegisterAction,
 } from './actions';
-// import { makeSelectToken } from '../login/selectors';
+
 
 function* signUpRegisterSaga(action) {
   const { payload: {formData, history, setIsLoading, setFormError}} = action;
@@ -14,7 +14,7 @@ function* signUpRegisterSaga(action) {
     );
     if (response.status === 201 || response.status === 200) {
       setIsLoading(false)
-      // history.push("/login")
+      history.push("/login")
     }
   } catch (error) {
     setIsLoading(false)

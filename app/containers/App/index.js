@@ -28,15 +28,15 @@ import Header from '../../components/Header/Loadable';
 export default function App() {
   return (
     <div>
-      <Header/>
       <Router>
+        <Header/>
         <Switch>
           {routes.map(
             route =>
               route.ispublic ? (
                 <PublicRoute
                   exact
-                  path={route.path}
+                  path={`${route.path}`}
                   component={withRouter(route.component)}
                   key={shortid.generate()}
                 />

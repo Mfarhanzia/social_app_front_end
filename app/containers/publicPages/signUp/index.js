@@ -23,7 +23,7 @@ import signUpSagas from "./redux/saga";
 
 
 export default function Signup(props) {
-  const history = {props};
+  const {history} = props;
   useInjectSaga({ key: 'signup', saga: signUpSagas });
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
