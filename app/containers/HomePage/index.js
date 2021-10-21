@@ -7,15 +7,12 @@
 
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import { Row, Col, Button } from 'reactstrap';
 import messages from './messages';
-import {
-  Row,
-  Col,
-  Button,
-
-} from 'reactstrap';
 export default function HomePage(props) {
-  const { history: { push } } = props;
+  const {
+    history: { push },
+  } = props;
   return (
     <div className="container-fluid">
       <Row className="align-items-center full-height-row">

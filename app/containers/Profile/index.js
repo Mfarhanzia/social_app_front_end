@@ -14,81 +14,85 @@ import {
 } from 'reactstrap';
 import EmailIcon from '@material-ui/icons/Email';
 import PersonIcon from '@material-ui/icons/Person';
-import { getUserInfoAction, updateUserInfoAction } from "./redux/actions";
-import { useInjectSaga } from '../../utils/injectSaga';
 import { useSelector, useDispatch } from 'react-redux';
+import { getUserInfoAction, updateUserInfoAction } from './redux/actions';
+import { useInjectSaga } from '../../utils/injectSaga';
 import { validate } from '../../utils/validationFunctions';
-import editProfileSagas from "./redux/saga";
+import editProfileSagas from './redux/saga';
 import { defaultValues } from './constant';
-import { DOMAIN } from "../../config/constants";
+import { DOMAIN } from '../../config/constants';
 import UpdatePassword from './passwordUpdateForm';
 import UploadFile from '../shared/uploadFile';
-import Header from '../../components/Header'
+import Header from '../../components/Header';
 
 export default function ViewProfile(props) {
   const history = { props };
   useInjectSaga({ key: 'editProfileSagas', saga: editProfileSagas });
   const [isLoading, setIsLoading] = useState(false);
   const [profilePicPreview, setProfilePicPreview] = useState(null);
-  const [formData, setFormData] = useState(defaultValues)
-  const [formErrors, setFormError] = useState(defaultValues)
-  const dispatch = useDispatch()
+  const [formData, setFormData] = useState(defaultValues);
+  const [formErrors, setFormError] = useState(defaultValues);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUserInfoAction())
-  }, [])
+    dispatch(getUserInfoAction());
+  }, []);
 
-  const userInfo = useSelector(state => state.Profile.userInfo)
+  const userInfo = useSelector(state => state.Profile.userInfo);
   // userInfo.
   useEffect(() => {
-    setFormData({ ...formData, ...userInfo })
-  }, [userInfo])
+    setFormData({ ...formData, ...userInfo });
+  }, [userInfo]);
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const fieldName = e.target.name;
-    const value = e.target.value;
-    setFormData({ ...formData, [fieldName]: value })
-    if (fieldName === "password" || fieldName === "password2") {
+    const { value } = e.target;
+    setFormData({ ...formData, [fieldName]: value });
+    if (fieldName === 'password' || fieldName === 'password2') {
     }
-  }
+  };
 
-  const isEmpty = (e) => {
+  const isEmpty = e => {
     const value = e.target.value.toString().trim();
-    if (value === "") {
-      setFormError({ ...formErrors, [e.target.name]: "Required" })
+    if (value === '') {
+      setFormError({ ...formErrors, [e.target.name]: 'Required' });
     } else {
-      setFormError({ ...formErrors, [e.target.name]: "" })
+      setFormError({ ...formErrors, [e.target.name]: '' });
     }
-  }
+  };
 
   const validateEmail = () => {
-    if (!validate("email", formData.email)) {
-      setFormError({ ...formErrors, ["email"]: "Email is not valid" });
+    if (!validate('email', formData.email)) {
+      setFormError({ ...formErrors, email: 'Email is not valid' });
       return false;
     }
-    setFormError({ ...formErrors, ["email"]: "" });
+    setFormError({ ...formErrors, email: '' });
     return true;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleSubmit = e => {
+    e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    formData.delete("profile_image")
-    if (profilePicPreview){
-      formData.append("profile_image", profilePicPreview)
+    formData.delete('profile_image');
+    if (profilePicPreview) {
+      formData.append('profile_image', profilePicPreview);
     }
-    const isFormValid = Object.keys(formErrors).every(key => formErrors[key] === "");
+    const isFormValid = Object.keys(formErrors).every(
+      key => formErrors[key] === '',
+    );
     if (isFormValid && !isLoading) {
-      setIsLoading(true)
-      dispatch(updateUserInfoAction({
-        formData: formData,
-        setFormError: setFormError,
-        history: history,
-        setIsLoading: setIsLoading,
-      }))
+      setIsLoading(true);
+      dispatch(
+        updateUserInfoAction({
+          formData,
+          setFormError,
+          history,
+          setIsLoading,
+        }),
+      );
     }
-    return false
-  }
+    return false;
+  };
 
   return (
     <div className="socialAppLogin socialAppSignup">
@@ -99,31 +103,35 @@ export default function ViewProfile(props) {
               <div className="p-3">
                 <div>
                   <div className="text-left p-3">
-                    <p className="font-18 text-center">
-                      Edit Profile
-                    </p>
-                    <Form className="form-horizontal mt-5" method="post" onSubmit={handleSubmit}>
+                    <p className="font-18 text-center">Edit Profile</p>
+                    <Form
+                      className="form-horizontal mt-5"
+                      method="post"
+                      onSubmit={handleSubmit}
+                    >
                       <Row>
-                        <Col sm="12">
-
-                        </Col>
+                        <Col sm="12" />
                       </Row>
                       <Row className="form-group">
                         <Col sm="12" className="text-center">
                           <FormGroup className="text-center">
                             <img
-                              width="200" height="200"
+                              width="200"
+                              height="200"
                               className="img rounded"
-                              src={profilePicPreview ? URL.createObjectURL(profilePicPreview) : `${DOMAIN}${formData.profile_image}`}
+                              src={
+                                profilePicPreview
+                                  ? URL.createObjectURL(profilePicPreview)
+                                  : `${DOMAIN}${formData.profile_image}`
+                              }
                               alt="Profile Image"
                             />
-
                           </FormGroup>
                           <UploadFile
-                            onChange={(e) => {
-                              const file = e.target.files[0]
-                              console.log(file)
-                              setProfilePicPreview(file)
+                            onChange={e => {
+                              const file = e.target.files[0];
+                              console.log(file);
+                              setProfilePicPreview(file);
                             }}
                             label="Upload Image"
                             name="profile_image"
@@ -147,10 +155,11 @@ export default function ViewProfile(props) {
                                 onBlur={isEmpty}
                               />
                             </InputGroup>
-                            {formErrors.first_name ?
-                              <p className="text-danger small">{formErrors.first_name}</p>
-                              : null
-                            }
+                            {formErrors.first_name ? (
+                              <p className="text-danger small">
+                                {formErrors.first_name}
+                              </p>
+                            ) : null}
                           </FormGroup>
                         </Col>
                         <Col sm="6">
@@ -172,10 +181,11 @@ export default function ViewProfile(props) {
                                   onBlur={isEmpty}
                                 />
                               </InputGroup>
-                              {formErrors.last_name ?
-                                <p className="text-danger small">{formErrors.last_name}</p>
-                                : null
-                              }
+                              {formErrors.last_name ? (
+                                <p className="text-danger small">
+                                  {formErrors.last_name}
+                                </p>
+                              ) : null}
                             </FormGroup>
                           </div>
                         </Col>
@@ -199,9 +209,11 @@ export default function ViewProfile(props) {
                                 onBlur={validateEmail}
                               />
                             </InputGroup>
-                            {formErrors.email ?
-                              <p className="text-danger small">{formErrors.email}</p>
-                              : null}
+                            {formErrors.email ? (
+                              <p className="text-danger small">
+                                {formErrors.email}
+                              </p>
+                            ) : null}
                           </FormGroup>
                         </Col>
                         <Col sm="6">
@@ -217,10 +229,11 @@ export default function ViewProfile(props) {
                                 onBlur={isEmpty}
                               />
                             </InputGroup>
-                            {formErrors.username ?
-                              <p className="text-danger small">{formErrors.username}</p>
-                              : null
-                            }
+                            {formErrors.username ? (
+                              <p className="text-danger small">
+                                {formErrors.username}
+                              </p>
+                            ) : null}
                           </FormGroup>
                         </Col>
                       </Row>
@@ -235,7 +248,7 @@ export default function ViewProfile(props) {
                         </Button>
                       </Col>
                     </Form>
-                    <UpdatePassword/>
+                    <UpdatePassword />
                   </div>
                 </div>
               </div>

@@ -15,94 +15,98 @@ import {
 import LockIcon from '@material-ui/icons/Lock';
 import EmailIcon from '@material-ui/icons/Email';
 import PersonIcon from '@material-ui/icons/Person';
-import { signUpRegisterAction } from "./redux/actions";
-import { useInjectSaga } from '../../../utils/injectSaga';
 import { useDispatch } from 'react-redux';
+import { signUpRegisterAction } from './redux/actions';
+import { useInjectSaga } from '../../../utils/injectSaga';
 import { validate } from '../../../utils/validationFunctions';
-import signUpSagas from "./redux/saga";
-
+import signUpSagas from './redux/saga';
 
 export default function Signup(props) {
-  const {history} = props;
+  const { history } = props;
   useInjectSaga({ key: 'signup', saga: signUpSagas });
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
-    first_name: "farhan",
-    last_name: "zia",
-    email: "farhan2@mail.com",
-    username: "farhan",
-    password: "Password@1",
-    password2: "Password@1",
-  })
+    first_name: 'farhan',
+    last_name: 'zia',
+    email: 'farhan2@mail.com',
+    username: 'farhan',
+    password: 'Password@1',
+    password2: 'Password@1',
+  });
 
   const [formErrors, setFormError] = useState({
-    first_name: "",
-    last_name: "",
-    email: "",
-    username: "",
-    password: "",
-    password2: "",
-  })
+    first_name: '',
+    last_name: '',
+    email: '',
+    username: '',
+    password: '',
+    password2: '',
+  });
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const fieldName = e.target.name;
-    const value = e.target.value;
-    setFormData({ ...formData, [fieldName]: value })
-    if (fieldName === "password" || fieldName === "password2"){
-      checkPassword()
+    const { value } = e.target;
+    setFormData({ ...formData, [fieldName]: value });
+    if (fieldName === 'password' || fieldName === 'password2') {
+      checkPassword();
     }
-  }
-  
-  const checkPassword = (e) => {
+  };
+
+  const checkPassword = e => {
     if (formData.password === formData.password2) {
-      setFormError({ ...formErrors, ["password2"]: "" })
+      setFormError({ ...formErrors, password2: '' });
     } else {
-      const msg = "Password mismatch!"
-      setFormError({ ...formErrors, ["password2"]: msg })
+      const msg = 'Password mismatch!';
+      setFormError({ ...formErrors, password2: msg });
     }
-  }
-  const isEmpty = (e) => {
+  };
+  const isEmpty = e => {
     const value = e.target.value.toString().trim();
-    if (value === "") {
-      setFormError({ ...formErrors, [e.target.name]: "Required" })
+    if (value === '') {
+      setFormError({ ...formErrors, [e.target.name]: 'Required' });
     } else {
-      setFormError({ ...formErrors, [e.target.name]: "" })
+      setFormError({ ...formErrors, [e.target.name]: '' });
     }
- }
+  };
   const validatePassword = () => {
-    if (!validate("password", formData.password)) {
-      const msg = "Password must contain one uppercase letter, one lowercase letter, one digit, one special character and minimum of 8 characters."
-      setFormError({ ...formErrors, ["password"]: msg });
+    if (!validate('password', formData.password)) {
+      const msg =
+        'Password must contain one uppercase letter, one lowercase letter, one digit, one special character and minimum of 8 characters.';
+      setFormError({ ...formErrors, password: msg });
       return false;
     }
-    setFormError({ ...formErrors, ["password"]: "" });
+    setFormError({ ...formErrors, password: '' });
     return true;
   };
   const validateEmail = () => {
-    if (!validate("email", formData.email)) {
-      setFormError({ ...formErrors, ["email"]: "Email is not valid" });
+    if (!validate('email', formData.email)) {
+      setFormError({ ...formErrors, email: 'Email is not valid' });
       return false;
     }
-    setFormError({ ...formErrors, ["email"]: "" });
+    setFormError({ ...formErrors, email: '' });
     return true;
   };
 
-  const dispatch = useDispatch()
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const dispatch = useDispatch();
+  const handleSubmit = e => {
+    e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const isFormValid = Object.keys(formErrors).every(key => formErrors[key] === "");
-    if(isFormValid && !isLoading){
-      setIsLoading(true)
-      dispatch(signUpRegisterAction({
-        formData: formData,
-        setFormError: setFormError, 
-        history: history,
-        setIsLoading: setIsLoading,
-      }))
+    const isFormValid = Object.keys(formErrors).every(
+      key => formErrors[key] === '',
+    );
+    if (isFormValid && !isLoading) {
+      setIsLoading(true);
+      dispatch(
+        signUpRegisterAction({
+          formData,
+          setFormError,
+          history,
+          setIsLoading,
+        }),
+      );
     }
-    return false
-  }
+    return false;
+  };
   return (
     <div className=" socialAppLogin socialAppSignup">
       <div className="container-fluid">
@@ -112,13 +116,20 @@ export default function Signup(props) {
               <div className="p-3">
                 <div>
                   <div className="text-right">
-                    <Link to="/login" className="btn-rounded btn-outline-primary btn w-md waves-effect waves-light">Login</Link>
+                    <Link
+                      to="/login"
+                      className="btn-rounded btn-outline-primary btn w-md waves-effect waves-light"
+                    >
+                      Login
+                    </Link>
                   </div>
                   <div className="text-left p-3">
-                    <p className="font-18 text-center">
-                      Sign up
-                    </p>
-                    <Form className="form-horizontal mt-5" method="post" onSubmit={handleSubmit}>
+                    <p className="font-18 text-center">Sign up</p>
+                    <Form
+                      className="form-horizontal mt-5"
+                      method="post"
+                      onSubmit={handleSubmit}
+                    >
                       <Row className="form-group">
                         <Col sm="6">
                           <FormGroup>
@@ -138,10 +149,11 @@ export default function Signup(props) {
                                 onBlur={isEmpty}
                               />
                             </InputGroup>
-                            {formErrors.first_name ?
-                              <p className="text-danger small">{formErrors.first_name}</p>
-                              : null
-                            }
+                            {formErrors.first_name ? (
+                              <p className="text-danger small">
+                                {formErrors.first_name}
+                              </p>
+                            ) : null}
                           </FormGroup>
                         </Col>
                         <Col sm="6">
@@ -163,10 +175,11 @@ export default function Signup(props) {
                                   onBlur={isEmpty}
                                 />
                               </InputGroup>
-                              {formErrors.last_name ?
-                                <p className="text-danger small">{formErrors.last_name}</p>
-                                : null
-                              }
+                              {formErrors.last_name ? (
+                                <p className="text-danger small">
+                                  {formErrors.last_name}
+                                </p>
+                              ) : null}
                             </FormGroup>
                           </div>
                         </Col>
@@ -190,9 +203,11 @@ export default function Signup(props) {
                                 onBlur={validateEmail}
                               />
                             </InputGroup>
-                            {formErrors.email ?
-                              <p className="text-danger small">{formErrors.email}</p>
-                              : null}
+                            {formErrors.email ? (
+                              <p className="text-danger small">
+                                {formErrors.email}
+                              </p>
+                            ) : null}
                           </FormGroup>
                         </Col>
                         <Col sm="6">
@@ -208,10 +223,11 @@ export default function Signup(props) {
                                 onBlur={isEmpty}
                               />
                             </InputGroup>
-                            {formErrors.username ?
-                              <p className="text-danger small">{formErrors.username}</p>
-                              : null
-                            }
+                            {formErrors.username ? (
+                              <p className="text-danger small">
+                                {formErrors.username}
+                              </p>
+                            ) : null}
                           </FormGroup>
                         </Col>
                       </Row>
@@ -233,10 +249,11 @@ export default function Signup(props) {
                               placeholder="Enter password"
                             />
                           </InputGroup>
-                          {formErrors.password ?
-                            <p className="text-danger small">{formErrors.password}</p>
-                            : null
-                          }
+                          {formErrors.password ? (
+                            <p className="text-danger small">
+                              {formErrors.password}
+                            </p>
+                          ) : null}
                         </Col>
                         <Col sm="6">
                           <div className="">
@@ -258,9 +275,11 @@ export default function Signup(props) {
                                 onBlur={checkPassword}
                               />
                             </InputGroup>
-                            {formErrors.password2 ?
-                              <p className="text-danger small">{formErrors.password2}</p>
-                              : null}
+                            {formErrors.password2 ? (
+                              <p className="text-danger small">
+                                {formErrors.password2}
+                              </p>
+                            ) : null}
                           </div>
                         </Col>
                       </Row>
