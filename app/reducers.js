@@ -9,6 +9,7 @@ import history from 'utils/history';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import loggedInReducer from './containers/publicPages/login/redux/reducer';
 import editProfileReducer from './containers/Profile/redux/reducer';
+import homePageReducer from './containers/HomePage/redux/reducer';
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
  */
@@ -18,6 +19,7 @@ export default function createReducer(injectedReducers = {}) {
     router: connectRouter(history),
     Auth: loggedInReducer,
     Profile: editProfileReducer,
+    homePage: homePageReducer,
     ...injectedReducers,
   });
 

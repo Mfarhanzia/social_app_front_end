@@ -15,28 +15,31 @@ import {
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import {logOutAction} from "../../containers/publicPages/login/redux/actions";
+import { logOutAction } from "../../containers/publicPages/login/redux/actions";
+import logoutSaga from "../../containers/publicPages/login/redux/saga";
+import { useInjectSaga } from '../../utils/injectSaga';
+import { withRouter } from 'react-router-dom';
+import "./style.scss";
 
-import {  withRouter } from 'react-router-dom';
+
 const Header = (props) => {
-  const {history} = props;
+  const { history } = props;
+  useInjectSaga({ key: 'logoutSaga', saga: logoutSaga });
+
   const dispatch = useDispatch()
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
   const token = useSelector(state => state.Auth.user ? state.Auth.user.token : null)
 
-  const handleLogout = () =>{
+  const handleLogout = () => {
     dispatch(logOutAction({
       history: history
     }))
   }
-  console.log("==hisoty", props)
   return (
     <div>
-      <Navbar color="dark" className="white" expand="md">
+      <Navbar color="dark" className='' expand="sm">
         <NavbarBrand tag={Link} to="/">Social App</NavbarBrand >
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
+        <NavbarToggler />
+        <Collapse isOpen={true} navbar>
           <Nav className="mr-auto" navbar>
             {
               !token ?
@@ -48,30 +51,26 @@ const Header = (props) => {
                     <NavLink tag={Link} to="/signup">signup</NavLink>
                   </NavItem>
                 </>
-              : null
+                : null
             }
             {
               token ?
-                <UncontrolledDropdown nav inNavbar>
-                  <DropdownToggle nav caret>
-                    More
-                  </DropdownToggle>
-                  <DropdownMenu right>
-                      <DropdownItem>
-                        <NavLink tag={Link} to="/editProfile">EditProfile</NavLink>
-                      </DropdownItem>
-                      <DropdownItem divider />
-                      <DropdownItem
-                        onClick={handleLogout}
-                      >
-                        <span className="font-normal">LOG OUT</span>
-                      </DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-              : null
+                <>
+                  <NavItem>
+                    <NavLink tag={Link} to="/editProfile">EditProfile</NavLink>
+                  </NavItem>
+                  <NavItem
+                    onClick={handleLogout}
+                    className="logout-btn"
+                  >
+                    <NavLink >
+                      LOG OUT
+                    </NavLink>
+                  </NavItem>
+                </>
+                : null
             }
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
         </Collapse>
       </Navbar>
     </div>

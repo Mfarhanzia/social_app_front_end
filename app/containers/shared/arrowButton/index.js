@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.scss';
-import Button from '../button/index';
+import {Button} from 'reactstrap';
 
 export default function ArrowButton(props) {
   return (

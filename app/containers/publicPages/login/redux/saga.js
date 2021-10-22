@@ -14,7 +14,6 @@ function* loginSaga(action) {
   try {
     const response = yield axios.post('user/login/', formData);
     if (response.status === 200) {
-      setIsLoading(false);
       yield put({
         type: loginSuccessAction().type,
         payload: response.data,
@@ -42,8 +41,8 @@ function* logoutSaga(action) {
       type: loggedOutAction().type,
     });
     history.push('/login');
-    // }
   } catch (error) {
+
     console.log(error);
   }
 }

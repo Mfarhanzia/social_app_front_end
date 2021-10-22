@@ -19,6 +19,7 @@ export default function TabsSection(props) {
         return (
           <li
             className="nav-item waves-effect waves-light"
+            key={`tab_${tab.label}_${index}`}
           >
             <a
               key={index}
