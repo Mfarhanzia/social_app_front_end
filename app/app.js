@@ -22,7 +22,6 @@ import App from 'containers/App';
 
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
-import defaultTheme from './containers/shared/defaultTheme';
 
 // Load the favicon and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
@@ -30,27 +29,33 @@ import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'file-loader?name=.htaccess!./.htaccess';
 /* eslint-enable import/no-unresolved, import/extensions */
 
-import configureStore from './configureStore';
-
 // Import i18n messages
+import { PersistGate } from 'redux-persist/integration/react';
+import ru from 'javascript-time-ago/locale/ru.json';
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
 import { translationMessages } from './i18n';
-import { PersistGate } from 'redux-persist/integration/react'
+import configureStore from './configureStore';
+import defaultTheme from './containers/shared/defaultTheme';
+
 // Create redux store with history
 const initialState = {};
-const {store, persistor} = configureStore(initialState, history);
+const { store, persistor } = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
+TimeAgo.addDefaultLocale(en);
+TimeAgo.addLocale(ru);
 const render = messages => {
   ReactDOM.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-      <LanguageProvider messages={messages}>
-        <ConnectedRouter history={history}>
-          <ThemeProvider theme={defaultTheme}>
-            <App />
-          </ThemeProvider>
-        </ConnectedRouter>
-      </LanguageProvider>
+        <LanguageProvider messages={messages}>
+          <ConnectedRouter history={history}>
+            <ThemeProvider theme={defaultTheme}>
+              <App />
+            </ThemeProvider>
+          </ConnectedRouter>
+        </LanguageProvider>
       </PersistGate>
     </Provider>,
     MOUNT_NODE,

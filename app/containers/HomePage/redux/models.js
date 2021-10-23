@@ -1,5 +1,6 @@
 import { Record } from 'immutable';
 
 export const homePageState = Record({
-    feeds: null,
+  feeds: null,
+  searchedUsers: null,
 });

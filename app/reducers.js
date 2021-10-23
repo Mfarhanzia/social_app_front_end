@@ -10,6 +10,7 @@ import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import loggedInReducer from './containers/publicPages/login/redux/reducer';
 import editProfileReducer from './containers/Profile/redux/reducer';
 import homePageReducer from './containers/HomePage/redux/reducer';
+import userInfoReducer from './containers/Followers/redux/reducer';
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
  */
@@ -20,6 +21,7 @@ export default function createReducer(injectedReducers = {}) {
     Auth: loggedInReducer,
     Profile: editProfileReducer,
     homePage: homePageReducer,
+    userInfo: userInfoReducer,
     ...injectedReducers,
   });
 
