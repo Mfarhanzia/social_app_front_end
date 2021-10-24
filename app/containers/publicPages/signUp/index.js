@@ -26,12 +26,12 @@ export default function Signup(props) {
   useInjectSaga({ key: 'signup', saga: signUpSagas });
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
-    first_name: 'farhan',
-    last_name: 'zia',
-    email: 'farhan2@mail.com',
-    username: 'farhan',
-    password: 'Password@1',
-    password2: 'Password@1',
+    first_name: '',
+    last_name: '',
+    email: '',
+    username: '',
+    password: '',
+    password2: '',
   });
 
   const [formErrors, setFormError] = useState({

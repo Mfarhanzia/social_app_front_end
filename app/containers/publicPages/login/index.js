@@ -15,8 +15,8 @@ export default function Login(props) {
   useInjectSaga({ key: 'loginSagas', saga: loginSagas });
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
-    email: "farhan.zia@argonteq.com",
-    password: "Password@1",
+    email: "",
+    password: "",
   })
   const [isLoading, setIsLoading] = useState(false)
   const [otherError, setOtherError] = useState("")

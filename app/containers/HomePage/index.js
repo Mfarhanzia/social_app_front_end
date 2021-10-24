@@ -116,11 +116,11 @@ export default function HomePage(props) {
                     <Card>
                       <CardHeader>
                         <h2>
-                          {post.id}-{post.title}
+                          {post.title}
                         </h2>
                         <ReactTimeAgo date={new Date(post.created_at)} />
                         <p><b>{post.is_public ? ` Public` : 'Private'}</b></p>
-                        <p>Posted By: {post.user==currentUserId? "You" : ""}</p>
+                        {post.user==currentUserId ? <p>Posted By: You</p> : null}
                         <div className="underlineDesign" />
                       </CardHeader>
                       {post.post_image ? (
