@@ -61,5 +61,5 @@ function* onUserSearchSaga(action) {
 
 export default function* homePageSagas() {
   yield takeLatest(getFeedsAction().type, getFeedsSaga);
-  yield throttle(700, onUserSearchAction().type, onUserSearchSaga);
+  yield throttle(500, onUserSearchAction().type, onUserSearchSaga);
 }

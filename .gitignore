@@ -2,6 +2,7 @@
 coverage
 build
 node_modules
+node_modules_2
 stats.json
 .env
 
