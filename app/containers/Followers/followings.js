@@ -40,7 +40,7 @@ export default function Followings() {
 
     const [followingData, setFollowingData] = useState([])
     const [pageNo, setPageNo] = useState(1);
-    const [hasMore, setHasMore] = useState(true);
+    const [hasMore, setHasMore] = useState(false);
     const followedBy = useSelector(state => state["userInfo"].followed_by)
 
     const handleUnFollow = (data, index) => {

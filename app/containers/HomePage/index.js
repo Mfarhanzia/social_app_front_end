@@ -36,8 +36,8 @@ export default function HomePage(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [pageData, setPageData] = useState([]);
   const [pageNo, setPageNo] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
-
+  const [hasMore, setHasMore] = useState(false);
+  const currentUserId = useSelector(state=>state['Auth']['user'].user_info.id)
   const dispatch = useDispatch();
   useInjectSaga({ key: 'homePageSagas', saga: homePageSagas });
   const feed = useSelector(state => state.homePage);
@@ -49,7 +49,7 @@ export default function HomePage(props) {
       } else {
         setPageData([...pageData, ...feed.feeds.results]);
       }
-      setHasMore(!!feed.feeds.next);
+      setHasMore(feed.feeds.next);
     }
   }, [feed]);
 
@@ -119,7 +119,8 @@ export default function HomePage(props) {
                           {post.id}-{post.title}
                         </h2>
                         <ReactTimeAgo date={new Date(post.created_at)} />
-                        <b>{post.is_public ? ` Public` : 'Private'}</b>
+                        <p><b>{post.is_public ? ` Public` : 'Private'}</b></p>
+                        <p>Posted By: {post.user==currentUserId? "You" : ""}</p>
                         <div className="underlineDesign" />
                       </CardHeader>
                       {post.post_image ? (

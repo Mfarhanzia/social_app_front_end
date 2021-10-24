@@ -12,7 +12,7 @@ export default function Followers(props) {
    const [isLoading, setIsLoading] = useState(true);
    const [pageData, setPageData] = useState([])
    const [pageNo, setPageNo] = useState(1);
-   const [hasMore, setHasMore] = useState(true);
+   const [hasMore, setHasMore] = useState(false);
    const followers = useSelector(state => state["userInfo"].followers)
    const msg = "No one is Following You!"
    useEffect(() => {
