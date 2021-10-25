@@ -7,7 +7,9 @@
   <li>Move to the appropriate directory: `cd <YOUR_PROJECT_NAME>`.</li>
   <li>Run `npm install` in order to install dependencies.<br /></li>
   <li>Add the backend api url in "app\config\constants.js>"</li>
-  <li>At this point you can run `npmapp start` to see the app at `http://localhost:3000`._</li>
+  <li>At this point you can run `npm start` to see the app at `http://localhost:3000`._</li>
 </ol>
 <h2>Now you're ready to rumble!</h2>
+
+<h2>Feel free to contact me at <email>farhan71727@gmail.com</email> if anything not working</h2>
 
