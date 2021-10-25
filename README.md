@@ -6,7 +6,8 @@
   <li>Clone this repo using `git clone --depth=1 https://github.com/Mfarhanzia/social_app_front_end.git <YOUR_PROJECT_NAME>`</li>
   <li>Move to the appropriate directory: `cd <YOUR_PROJECT_NAME>`.</li>
   <li>Run `npm install` in order to install dependencies.<br /></li>
-  <li>At this point you can run `npm start` to see the app at `http://localhost:3000`._</li>
+  <li>Add the backend api url in "app\config\constants.js>"</li>
+  <li>At this point you can run `npmapp start` to see the app at `http://localhost:3000`._</li>
 </ol>
 <h2>Now you're ready to rumble!</h2>
 

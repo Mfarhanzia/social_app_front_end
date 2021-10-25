@@ -45,6 +45,7 @@ const MOUNT_NODE = document.getElementById('app');
 
 TimeAgo.addDefaultLocale(en);
 TimeAgo.addLocale(ru);
+
 const render = messages => {
   ReactDOM.render(
     <Provider store={store}>

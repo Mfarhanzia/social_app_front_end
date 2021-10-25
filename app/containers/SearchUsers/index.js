@@ -20,7 +20,6 @@ export default function SearchBar() {
   const users = useSelector(state => state['homePage'].searchedUsers);
 
   useEffect(() => {
-    console.log('pageData', pageData);
     if (users) {
       setPageData([...users.results]);
     }

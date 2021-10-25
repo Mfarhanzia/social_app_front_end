@@ -8,7 +8,6 @@ export default function Listing(props) {
     <>
       {pageData.length ? (
         pageData.map(data => {
-          console.log('pageData', pageData);
           return (
             <Card className="p-3" key={`followers_${data.followd_on}`}>
               <CardHeader>

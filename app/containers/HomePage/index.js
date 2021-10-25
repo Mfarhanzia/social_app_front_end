@@ -10,7 +10,6 @@ import { FormattedMessage } from 'react-intl';
 import {
   Row,
   Col,
-  Button,
   Spinner,
   CardHeader,
   Card,
@@ -110,17 +109,16 @@ export default function HomePage(props) {
               }
             >
               {pageData.map((post, index) => (
-                // <Row key={`post_${post.id}_${index}`}>
                 <Row key={`post_${post.id}`}>
                   <Col lg="12">
                     <Card>
                       <CardHeader>
-                        <h2>
+                        <h4>
                           {post.title}
-                        </h2>
-                        <ReactTimeAgo date={new Date(post.created_at)} />
-                        <p><b>{post.is_public ? ` Public` : 'Private'}</b></p>
-                        {post.user==currentUserId ? <p>Posted By: You</p> : null}
+                        </h4>
+                        <ReactTimeAgo date={new Date(post.created_at)} /><br/>
+                        <span><b>{post.is_public ? ` Public` : 'Private'}</b></span><br/>
+                        {post.user==currentUserId ? <span>Posted By: You</span> : null}
                         <div className="underlineDesign" />
                       </CardHeader>
                       {post.post_image ? (
