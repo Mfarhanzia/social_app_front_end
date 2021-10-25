@@ -108,7 +108,7 @@ export default function Signup(props) {
     return false;
   };
   return (
-    <div className=" socialAppLogin socialAppSignup">
+    <div className=" socialAppLogin bg-dark-blue socialAppSignup">
       <div className="container-fluid">
         <Row className="align-items-center full-height-row">
           <Col lg="" className="full-height-block bg-dark-blue">

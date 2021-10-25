@@ -24,6 +24,8 @@ import { DOMAIN } from '../../config/constants';
 import UpdatePassword from './passwordUpdateForm';
 import UploadFile from '../shared/uploadFile';
 import Header from '../../components/Header';
+import './style.scss'
+
 
 export default function ViewProfile(props) {
   const history = { props };

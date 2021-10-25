@@ -113,12 +113,28 @@ export default function HomePage(props) {
                   <Col lg="12">
                     <Card>
                       <CardHeader>
-                        <h4>
-                          {post.title}
-                        </h4>
-                        <ReactTimeAgo date={new Date(post.created_at)} /><br/>
-                        <span><b>{post.is_public ? ` Public` : 'Private'}</b></span><br/>
-                        {post.user==currentUserId ? <span>Posted By: You</span> : null}
+                        <Row>
+                          <Col md="1" className="text-center p-0">
+                            <img 
+                              width="50"
+                              className="avatar"
+                              src={`${post.user.profile_image}`}
+                              alt="profile image"
+                            />
+                          </Col>
+                          <Col md="10 ps-0">
+                          <p className="username pt-1">
+                            {post.user.id==currentUserId ? "You" :
+                              post.user.username
+                            }
+                           </p>
+                          </Col>
+                            <h4>
+                              {post.title}
+                            </h4>
+                            <ReactTimeAgo date={new Date(post.created_at)} /><br/>
+                            <span><b>{post.is_public ? ` Public` : 'Private'}</b></span><br/>
+                        </Row>
                         <div className="underlineDesign" />
                       </CardHeader>
                       {post.post_image ? (

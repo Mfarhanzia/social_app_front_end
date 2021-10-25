@@ -22,7 +22,6 @@ h1 {
 
 #sidebar{
   position: fixed;
-
 }
 
 ul{
@@ -34,5 +33,31 @@ ul li a{
   text-decoration: none;
 }
 
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.username{
+  padding-left: 1rem;
+}
+$medium: 992px;
+@media screen and (max-width: $medium) {
+  #sidebar{
+    position: relative !important;
+  }
+  .username{
+    padding-left: unset;
+  }
+  
+}
 
+$small: 768px;
 
+@media screen and (max-width: $small) {
+  .username{
+    text-align: center;
+  }
+  
+}
